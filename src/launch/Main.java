@@ -25,8 +25,8 @@ public class Main {
 		}
 		
 		
-		Triomino jetons=new Triomino();
-		Pion[]tableau=jetons.init_tab();
+		//Triomino jetons=new Triomino();
+		Pion[]tableau=jeton.init_tab();
 		
 		
 		
