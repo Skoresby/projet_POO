@@ -2,15 +2,34 @@ package launch;
 
 import java.util.Scanner;
 
-public class Jeu {
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+
+public class Jeu extends JFrame {
+	
 	
 	 public Jeu() { 
-	    
+ 
 	}
-	protected Scanner sc = new Scanner(System.in);
-    protected String nom;
-    protected int nbreJoueursMax=4;
-   
+	   protected Scanner sc = new Scanner(System.in);
+	    protected String nom;
+	    protected int nbreJoueursMax=4;
+	    public static final int larg_Fenetre = 2000;
+	    public static final int haut_Fenetre = 1500;
+	    public static final int larg_ere = 1400;
+	    public static final int haut_ere = 1050;
+	    public static final int x_ere = 600;
+	    public static final int y_ere = 200;
+	    public static final int xa= larg_Fenetre/10;
+	    public static final int larg_bouton= 80;
+	    public static final int haut_bouton= 40;
+	    public static final int ya= haut_Fenetre -300;
+	    public static final int alignement_b_x= 10;//pour menu et annuler
+	    public static final int alignement_b_y= 10;//pour menu
+	    public static final int larg_ere_joueur = 600;
+	    public static final int y_ere_joueur = 200;
+
     public Partie choix_jeu() {
     	do
     	{	
@@ -105,7 +124,7 @@ public class Jeu {
 
     public void afficher_base() {
         // TODO implement here
+    	
     }
-    
 
 }
