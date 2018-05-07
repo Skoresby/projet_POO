@@ -103,7 +103,7 @@ public class Jeu {
         // TODO implement here
     }
 
-    public void afficher_base() {
+    public void afficher_base_de_donnee() {
         // TODO implement here
     }
     
