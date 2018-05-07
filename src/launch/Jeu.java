@@ -106,5 +106,4 @@ public class Jeu {
     public void afficher_base_de_donnee() {
         // TODO implement here
     }
-    
 }
