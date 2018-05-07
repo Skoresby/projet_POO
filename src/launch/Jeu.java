@@ -15,6 +15,7 @@ public class Jeu extends JFrame {
 	   protected Scanner sc = new Scanner(System.in);
 	    protected String nom;
 	    protected int nbreJoueursMax=4;
+	    //les macro
 	    public static final int larg_Fenetre = 2000;
 	    public static final int haut_Fenetre = 1500;
 	    public static final int larg_ere = 1400;
