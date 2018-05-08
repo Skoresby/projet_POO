@@ -2,17 +2,13 @@ package launch;
 
 import java.util.*;
 
+import launch.Pion;
+
 public class Triomino extends Partie {
 	//constructeur
     public Triomino() {
     	
-    	/*for(int i=0; i<56; i++)
-    	{
-    		this.tableau[i]=new Pion();
-    		//this.tableau[i].valeurs=new int[3];
-    		
-    		
-    	}*/
+    	
     }
 
    
@@ -25,7 +21,7 @@ public class Triomino extends Partie {
     		this.tableau[i].set_valeurs(new int[3]);
     	}
     	int count=0;
-		int[] vals=new int[3];
+		
 
     	for(int i=0; i<6; i++)
     	{
@@ -33,21 +29,31 @@ public class Triomino extends Partie {
     		{
     			for(int k=j; k<6; k++)
     			{
-    				System.out.println("i="+i+" j="+j+" k="+k+" count="+count);
+    				int[] vals=new int[3];
 	   				vals[0]=i;
 	   				vals[1]=j;
 	   				vals[2]=k;
 	   				this.tableau[count].set_valeurs(vals);
+	   				this.tableau[count].set_occupation(false);
     				count=count+1;
     			}
     		}
     	}
-    	/*for(int i=0; i<56; i++)
+    	
+    	//melange du tableau
+    	Pion change=new Pion();
+    	int alea;
+    	for(int i=0; i<56; i++)
     	{
-    		int[] vals=new int[3];
-    		vals=this.tableau[i].get_valeurs();
-    		System.out.println(+vals[0]+" "+vals[1]+" "+vals[2]);
-    	}*/
+    		int [] vals=new int[3];
+    		change=this.tableau[i];
+    		vals=change.get_valeurs();
+    		
+    		alea=(int)(Math.random()*56);
+    		
+    		this.tableau[i]=this.tableau[alea];
+    		this.tableau[alea]=change;
+    	}
     	
     	return this.tableau;
     }
