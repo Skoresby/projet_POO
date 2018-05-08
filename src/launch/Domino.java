@@ -7,6 +7,7 @@ import javax.swing.JLabel;
 import javax.swing.JTextArea;
 
 
+<<<<<<< HEAD
 public class Domino extends AbsDomTrio {
 	protected JTextArea nom1 = new JTextArea("  nom joueur4");
 	protected JTextArea nom2 = new JTextArea("  nom joueur3");
@@ -29,6 +30,11 @@ public class Domino extends AbsDomTrio {
 	protected JLabel  score_J4 = new JLabel("  0 ");
 	
 	protected Domino() {
+=======
+public class Domino extends Partie {
+
+    public Domino() {
+>>>>>>> branch 'master' of https://github.com/Skoresby/projet_POO
     	
     }
     

@@ -14,6 +14,7 @@ import javax.swing.JScrollPane;
 
 //import java.util.*;
 
+<<<<<<< HEAD
 public class Partie extends Jeu {
 	
 	protected JPanel container = new JPanel();//le container contiendra tout les conposants de la fenetre
@@ -26,6 +27,10 @@ public class Partie extends Jeu {
 	protected JButton menu = new JButton("",imgm);
 	ImageIcon imgv = new ImageIcon("C:\\Users\\mac\\Desktop\\ISTY\\semestre2\\POO\\JAVA\\image_DT/b_valider.PNG");//bouton valider
 	JButton valider = new JButton("",imgv);
+=======
+abstract class Partie extends Jeu {
+
+>>>>>>> branch 'master' of https://github.com/Skoresby/projet_POO
     public Partie() {
     }
 
@@ -35,6 +40,10 @@ public class Partie extends Jeu {
     protected int nbreJoueurOrdi;
     private int idGagant;
     private int scoreGagnant;
+    protected Pion tableau[];
+	protected Pion plateau[][];
+	 
+	 
 
     public void terminer_coup() {
     }
@@ -86,6 +95,7 @@ public class Partie extends Jeu {
     }
 
     public void afficher_base_jeu() {
+<<<<<<< HEAD
     	this.setTitle("Ma première fenêtre Java");
 		  this.setSize(larg_Fenetre, haut_Fenetre);
 		  this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -132,5 +142,71 @@ public class Partie extends Jeu {
 		  this.setContentPane(container);
 		    
 		  }
+=======
+        // TODO implement here
+    }
+    
+    public void entrer_joueurs(Joueur[] joueur) {
+    	do
+    	{
+    		this.set_nbre_j_humain();
+    		this.set_nbre_j_ordi();
+    		if(this.get_nbre_j_total()<2)
+    		{
+    			System.out.println("tu n as pas mis assez de joueurs");
+    		}
+    		else if (this.get_nbre_j_total()>4)
+    		{
+    			System.out.println("tu as mis trop de joueurs");
+    		}
+    	}while(this.get_nbre_j_total()<2 || this.get_nbre_j_total()>4);
+    	
+    	//Joueur joueur[] = new Joueur[4];
+
+    	for(int i=0; i<this.nbreJoueurHumain; i++)
+    	{
+    		joueur[i]=new Joueur();
+    		joueur[i].set_nom();
+    		if(this.get_nbre_j_total() == 2)
+    			joueur[i].set_nbre_piece(9);
+    		else
+    			joueur[i].set_nbre_piece(7);
+    		joueur[i].set_type(1);
+    		//verifier que humain c est 1
+    		joueur[i].set_num_partie(this.numeroPartie);
+    		joueur[i].set_position(i);
+    	}
+    	for(int i=this.nbreJoueurHumain; i<this.get_nbre_j_total(); i++)//donc pour tous les ordis
+    	{
+    		joueur[i]=new Joueur();
+    		joueur[i].set_nom("ordi"+i);
+    		if(this.get_nbre_j_total() == 2)
+    			joueur[i].set_nbre_piece(9);
+    		else
+    			joueur[i].set_nbre_piece(7);
+    		joueur[i].set_type(2);
+			joueur[i].set_num_partie(this.numeroPartie);
+			joueur[i].set_position(i);
+    	}
+    	
+    	for(int i=this.get_nbre_j_total(); i<4; i++)
+    	{
+    		joueur[i]=new Joueur();
+    		joueur[i].set_nom(" ");
+    		joueur[i].set_nbre_piece(0);
+    		joueur[i].set_type(0);
+			joueur[i].set_num_partie(this.numeroPartie);
+			joueur[i].set_position(-1);
+    	}
+    }
+    
+    //methodes abstraites
+    abstract Pion[] init_tab();
+    abstract void afficher();
+    abstract boolean partie_gagnee();
+    abstract boolean coup_possible();
+    abstract int premier_a_jouer();	
+    abstract void aide();
+>>>>>>> branch 'master' of https://github.com/Skoresby/projet_POO
 
 }
