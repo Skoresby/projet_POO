@@ -91,12 +91,18 @@ public class Partie extends Jeu {
 		  this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		  this.setLocationRelativeTo(null);
 		  this.setVisible(true);
-		  this.setContentPane(container);   
 		  
-		    Font pole= new Font("tahona",Font.BOLD,16);//definition d'une police pour les écrits
+		  container.setLayout(null);
+		  zone_joueur.setLayout(null);
+		  System.out.println("ere="+haut_ere);
+		  zone_joueur.setBounds(0,y_ere_joueur,larg_ere_joueur,haut_ere);
+		  zone_joueur.setOpaque(true);
+		  zone_joueur.setBackground(Color.gray);
+		  
+		  Font pole= new Font("tahona",Font.BOLD,16);//definition d'une police pour les écrits
 		    annuler.setFont(pole);
-		    annuler.setBounds(alignement_b_x, ya, larg_bouton, haut_bouton);
-		    annuler.setOpaque(false);
+		    annuler.setBounds(annuler_x,y_annuler,larg_bouton,haut_bouton);
+		    annuler.setOpaque(true);
 		    annuler.addActionListener( new ActionListener() {//ecouteur permetant d'emplemmenter les actions du bouton annuler
 		    	public void actionPerformed(ActionEvent e) {
 		    	System.out.println("annuler");
@@ -104,37 +110,26 @@ public class Partie extends Jeu {
 		    	}
 		    	}
 		    	);
-		    
-		    menu.setBounds(alignement_b_x, alignement_b_y, larg_bouton, haut_bouton);
-		    menu.setOpaque(false);
-		    menu.addActionListener( new ActionListener() { //ecouteur permetant d'emplemmenter les actions du bouton annuler
-		    	public void actionPerformed(ActionEvent e) {
-		    		System.out.println("vous voulez aller au menu ohohhh  ! ");
-		    	}
-		    	}
-		    	);
 		    valider.setFont(pole);
-		    valider.setBounds(xa+100, ya, larg_bouton, haut_bouton);
-		    valider.setOpaque(false);
-		    //valider.addMouseListener( new ActionListener() {
-		    	//public void actionPerformed(ActionEvent e) {
-		    	//}
-		    	//}
-		    	//);	
-		  container.setLayout(new BorderLayout());//définition du containeur global :il permettra de placer d'autre panel sur les points cardinaux
-		  ere.setLayout(null);
-		  ere.setBackground(new Color (82,137,83));//fond gris
-		  ere.setBounds(y_ere,y_ere,larg_ere,haut_ere);
-          //scroll.setBounds(600,200,1400,1050);	//ajout de la bare de scroll a ere jeu (je reverrai ca ^^
-          zone_joueur.setLayout(null);//zone_joueur permettra de placer les composants sur le panel en fonctions de les coordonnés
-		  zone_joueur.setBounds(0,y_ere_joueur,larg_ere_joueur,haut_ere);
-		  zone_joueur.setBackground(Color.gray);
-          
-		  container.add(annuler);
-		  container.add(valider);
+		    valider.setBounds(x_valider, y_annuler, larg_bouton, haut_bouton);
+		    valider.setOpaque(true);
+		    
+		    menu.setBounds(annuler_x,0, larg_bouton, haut_bouton);
+		    menu.setOpaque(true);
+		    
+		    ere.setLayout(null);
+			ere.setBackground(new Color (82,137,83));//fond gris
+			ere.setBounds(y_ere,y_ere,larg_ere,haut_ere);
+
+
+		    zone_joueur.add(annuler);
+		    zone_joueur.add(valider);
+		    zone_joueur.add(menu);
 		  container.add(zone_joueur);
-		  zone_joueur.add(menu);
-		  container.add(ere, BorderLayout.CENTER);
+		  container.add(ere);
+
+		  this.setContentPane(container);
+		    
 		  }
 
 }

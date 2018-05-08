@@ -55,6 +55,11 @@ public class Domino extends AbsDomTrio {
     }
 
     void afficher() {
+    	label.setBounds(200, 90, 400, 70);
+    	label.setForeground(Color.blue);
+    	label.setHorizontalAlignment(JLabel.CENTER);
+    	container.add(label);
+    	label.setOpaque(false);
     	
 		  
 

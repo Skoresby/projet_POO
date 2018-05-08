@@ -11,25 +11,25 @@ public class Main extends JFrame{
 		
 		System.out.println("je suis dans le bon dossier!!!");
 		Jeu jeu = new Jeu();
-		Partie partie = jeu.choix_jeu();
+		//Partie partie = jeu.choix_jeu();
 		Joueur joueur[] = new Joueur[4];
 		Domino dom= new Domino();
-		jeu.entrer_joueurs(partie, joueur);
+		//jeu.entrer_joueurs(partie, joueur);
 		AbsDomTrio jeton;
-		if (jeu.get_nom().equals("Domino"))
-		{
-			jeton=new Domino();
-		}
-		else
-		{
-			jeton=new Triomino();
-		}
-		
+		//if (jeu.get_nom().equals("Domino"))
+		//{
+			//jeton=new Domino();
+		//}
+		//else
+		//{
+			//jeton=new Domino();
+		//}
+		Partie partie = new Partie();
 		
 		//Triomino jetons=new Triomino();
-		Pion[]tableau=jeton.init_tab();
+		//Pion[]tableau=jeton.init_tab();
 		partie.afficher_base_jeu();
-		dom.afficher();
+		//jeton.afficher();
 		System.out.println("rien");
 
 		
