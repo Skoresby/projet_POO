@@ -14,8 +14,7 @@ import javax.swing.JScrollPane;
 
 //import java.util.*;
 
-<<<<<<< HEAD
-public class Partie extends Jeu {
+abstract class Partie extends Jeu {
 	
 	protected JPanel container = new JPanel();//le container contiendra tout les conposants de la fenetre
     protected JPanel  ere = new JPanel();//panel ou se trouverra les domino joueur
@@ -27,10 +26,7 @@ public class Partie extends Jeu {
 	protected JButton menu = new JButton("",imgm);
 	ImageIcon imgv = new ImageIcon("C:\\Users\\mac\\Desktop\\ISTY\\semestre2\\POO\\JAVA\\image_DT/b_valider.PNG");//bouton valider
 	JButton valider = new JButton("",imgv);
-=======
-abstract class Partie extends Jeu {
 
->>>>>>> branch 'master' of https://github.com/Skoresby/projet_POO
     public Partie() {
     }
 
@@ -95,7 +91,6 @@ abstract class Partie extends Jeu {
     }
 
     public void afficher_base_jeu() {
-<<<<<<< HEAD
     	this.setTitle("Ma première fenêtre Java");
 		  this.setSize(larg_Fenetre, haut_Fenetre);
 		  this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -141,9 +136,7 @@ abstract class Partie extends Jeu {
 
 		  this.setContentPane(container);
 		    
-		  }
-=======
-        // TODO implement here
+		  
     }
     
     public void entrer_joueurs(Joueur[] joueur) {
@@ -207,6 +200,5 @@ abstract class Partie extends Jeu {
     abstract boolean coup_possible();
     abstract int premier_a_jouer();	
     abstract void aide();
->>>>>>> branch 'master' of https://github.com/Skoresby/projet_POO
 
 }

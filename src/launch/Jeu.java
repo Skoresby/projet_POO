@@ -88,8 +88,5 @@ public class Jeu extends JFrame {
         // TODO implement here
     	
     }
-<<<<<<< HEAD
 
-=======
->>>>>>> branch 'master' of https://github.com/Skoresby/projet_POO
 }
