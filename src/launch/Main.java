@@ -18,6 +18,7 @@ public class Main extends JFrame{
 		AbsDomTrio jeton;
 		//if (jeu.get_nom().equals("Domino"))
 		//{
+		
 			//jeton=new Domino();
 		//}
 		//else

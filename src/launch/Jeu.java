@@ -24,6 +24,7 @@ public class Jeu extends JFrame {
 	    public static final int y_ere = (int)(haut_Fenetre/(7.5));
 	    public static final int xa= larg_Fenetre/10;
 	    public static final int larg_bouton= 80;
+	   
 	    public static final int haut_bouton= 40;
 	    public static final int ya= (int)(haut_Fenetre /(1.25));
 	    public static final int annuler_x= (larg_Fenetre/200);//pour menu et annuler

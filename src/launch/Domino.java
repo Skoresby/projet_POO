@@ -6,6 +6,7 @@ import java.awt.Font;
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
 
+
 public class Domino extends AbsDomTrio {
 	protected JTextArea nom1 = new JTextArea("  nom joueur4");
 	protected JTextArea nom2 = new JTextArea("  nom joueur3");

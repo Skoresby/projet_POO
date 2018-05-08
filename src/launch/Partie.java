@@ -106,6 +106,7 @@ public class Partie extends Jeu {
 		    annuler.addActionListener( new ActionListener() {//ecouteur permetant d'emplemmenter les actions du bouton annuler
 		    	public void actionPerformed(ActionEvent e) {
 		    	System.out.println("annuler");
+		    	
 		    	System.exit(0);
 		    	}
 		    	}
