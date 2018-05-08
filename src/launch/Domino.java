@@ -1,7 +1,7 @@
 package launch;
 
 
-public class Domino extends AbsDomTrio {
+public class Domino extends Partie {
 
     public Domino() {
     	

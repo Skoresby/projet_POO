@@ -17,12 +17,22 @@ public class Jeu {
     		System.out.println("domino/triomino?");
     		this.nom=sc.nextLine();
     		
-    	}while (!this.nom.equals("Domino") && !this.nom.equals("Triomino"));
+    	}while (!this.nom.equals("domino") && !this.nom.equals("triomino"));
     	System.out.println("tu as choisi " + this.nom);
     	
-    	Partie partie= new Partie();
+    	Partie jeton;
+    	
+    	if (this.get_nom().equals("domino"))
+		{
+			jeton=new Domino();
+		}
+		else
+		{
+			jeton=new Triomino();
+		}
+    	
     	//this.entrer_joueurs(partie);
-    	return partie;
+    	return jeton;
     }
     
     public String get_nom() {
@@ -41,59 +51,7 @@ public class Jeu {
         // TODO implement here
     }
 
-    public void entrer_joueurs(Partie partie, Joueur[] joueur) {
-    	do
-    	{
-    		partie.set_nbre_j_humain();
-    		partie.set_nbre_j_ordi();
-    		if(partie.get_nbre_j_total()<2)
-    		{
-    			System.out.println("tu n as pas mis assez de joueurs");
-    		}
-    		else if (partie.get_nbre_j_total()>4)
-    		{
-    			System.out.println("tu as mis trop de joueurs");
-    		}
-    	}while(partie.get_nbre_j_total()<2 || partie.get_nbre_j_total()>4);
-    	
-    	//Joueur joueur[] = new Joueur[4];
-
-    	for(int i=0; i<partie.get_nbre_j_humain(); i++)
-    	{
-    		joueur[i]=new Joueur();
-    		joueur[i].set_nom();
-    		if(partie.get_nbre_j_total() == 2)
-    			joueur[i].set_nbre_piece(9);
-    		else
-    			joueur[i].set_nbre_piece(7);
-    		joueur[i].set_type(1);
-    		//verifier que humain c est 1
-    		joueur[i].set_num_partie(partie.get_num_partie());
-    		joueur[i].set_position(i);
-    	}
-    	for(int i=partie.get_nbre_j_humain(); i<partie.get_nbre_j_total(); i++)//donc pour tous les ordis
-    	{
-    		joueur[i]=new Joueur();
-    		joueur[i].set_nom("ordi"+i);
-    		if(partie.get_nbre_j_total() == 2)
-    			joueur[i].set_nbre_piece(9);
-    		else
-    			joueur[i].set_nbre_piece(7);
-    		joueur[i].set_type(2);
-			joueur[i].set_num_partie(partie.get_num_partie());
-			joueur[i].set_position(i);
-    	}
-    	
-    	for(int i=partie.get_nbre_j_total(); i<4; i++)
-    	{
-    		joueur[i]=new Joueur();
-    		joueur[i].set_nom(" ");
-    		joueur[i].set_nbre_piece(0);
-    		joueur[i].set_type(0);
-			joueur[i].set_num_partie(partie.get_num_partie());
-			joueur[i].set_position(-1);
-    	}
-    }
+    
 
     public void retour_choix_jeu() {
         // TODO implement here

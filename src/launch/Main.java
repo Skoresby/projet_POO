@@ -11,18 +11,10 @@ public class Main {
 		
 		System.out.println("je suis dans le bon dossier!!!");
 		Jeu jeu = new Jeu();
-		Partie partie = jeu.choix_jeu();
+		Partie jeton = jeu.choix_jeu();
 		Joueur joueur[] = new Joueur[4];
-		jeu.entrer_joueurs(partie, joueur);
-		AbsDomTrio jeton;
-		if (jeu.get_nom().equals("Domino"))
-		{
-			jeton=new Domino();
-		}
-		else
-		{
-			jeton=new Triomino();
-		}
+		jeton.entrer_joueurs(joueur);
+		
 		
 		Pion[]tableau=jeton.init_tab();
 		

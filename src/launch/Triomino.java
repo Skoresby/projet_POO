@@ -2,7 +2,7 @@ package launch;
 
 import java.util.*;
 
-public class Triomino extends AbsDomTrio {
+public class Triomino extends Partie {
 	//constructeur
     public Triomino() {
     	
