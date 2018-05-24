@@ -54,7 +54,6 @@ public class Jeu extends JFrame {
 			jeton=new Triomino();
 		}
     	
-    	//this.entrer_joueurs(partie);
     	return jeton;
     }
     

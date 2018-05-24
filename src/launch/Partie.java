@@ -12,6 +12,9 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
+import launch.Joueur;
+import launch.Pion;
+
 //import java.util.*;
 
 abstract class Partie extends Jeu {
@@ -34,8 +37,6 @@ abstract class Partie extends Jeu {
     private int numeroPartie;
     protected int nbreJoueurHumain;
     protected int nbreJoueurOrdi;
-    private int idGagant;
-    private int scoreGagnant;
     protected Pion tableau[];
 	protected Pion plateau[][];
 	 
@@ -62,6 +63,7 @@ abstract class Partie extends Jeu {
     public int get_nbre_j_humain() {
     	return this.nbreJoueurHumain;
     }
+    
     
     public int get_num_partie() {
     	return this.numeroPartie;
@@ -195,9 +197,12 @@ abstract class Partie extends Jeu {
     
     //methodes abstraites
     abstract Pion[] init_tab();
+	abstract Pion[][] init_plateau();
     abstract void afficher();
-    abstract boolean partie_gagnee();
-    abstract boolean coup_possible();
+	abstract  int partie_finie(Joueur[] joueur);
+	abstract int choisir_coup(Joueur[] joueur, int joueur_act);
+    abstract int[] coup_possible(int indice);
+	abstract void placer_pion(int indice);
     abstract int premier_a_jouer();	
     abstract void aide();
 

@@ -6,6 +6,9 @@ import java.awt.Font;
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
 
+import launch.Joueur;
+import launch.Pion;
+
 
 public class Domino extends Partie {
 	protected JTextArea nom1 = new JTextArea("  nom joueur4");
@@ -28,7 +31,7 @@ public class Domino extends Partie {
 	protected JLabel  score_J3 = new JLabel("  0 ");
 	protected JLabel  score_J4 = new JLabel("  0 ");
 	
-	protected Domino() {
+	public Domino() {
 
     	
     }
@@ -43,6 +46,17 @@ public class Domino extends Partie {
     	return aFaire;
     }
 
+    Pion[][] init_plateau() {
+    	Pion[][] a =new Pion[56][56];
+    	return a;
+    }
+    
+		 
+    void placer_pion(int indice) {
+    	return;
+		 
+	 }
+    
     void aide() {
     }
 
@@ -51,9 +65,17 @@ public class Domino extends Partie {
     	return gagne;
     }
 
-   boolean coup_possible() {
-	   boolean coup=false;
-	   return coup;
+    int[] coup_possible(int indice) {
+ 	   int[] coup= new int[2];
+ 	   return coup;
+     }
+
+    int choisir_coup(Joueur[] joueur, int joueur_act) {
+ 	   return -1;
+    }
+    
+    int partie_finie(Joueur[] joueur) {
+    	return -1;
     }
 
     void afficher() {
