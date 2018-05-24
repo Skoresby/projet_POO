@@ -102,11 +102,11 @@ public class Triomino extends Partie {
     	//pour les commentaires, X est le trio aPlacer
     	for(int i=0; i<3; i++)
     	{
-    		if(cote!=0)
+    		/*if(cote!=0)
     			System.out.println("97 i="+i+" cote="+cote+" c+i="+(cote+i)%3+" a[0]="+A[0]+" ap[c+i]="+aPlacer[(cote+i)%3]+" a[C]="+A[cote]+" ap[i]="+aPlacer[i]);
     		else
     			System.out.println("99 i="+i+" cote="+cote+" c+i="+(cote+i)%3+" a[1]="+A[1]+" ap[2-i]="+aPlacer[2-i]+" a[2]="+A[2]+" ap[(2*i+1)%3]="+aPlacer[(2*i+1)%3]);
-
+    		 */
 	    	if(cote!=0)
 	    	{
 	    		if((A[0]==aPlacer[(cote+i)%3])&&(A[cote]==aPlacer[i]))//verifie A0 avec X2 (ou X1 a l envers) et A2 (ou A1 a l envers) avec X0, puis on les incremente d 'un pour tester toutes les positions de X 
@@ -224,7 +224,7 @@ public class Triomino extends Partie {
   			System.out.println("a quel emplacement le placer? Emplacement dispos :");
   			for(int i=0; i<this.nbreCoupsVoulus; i++)//affichage des possibilités
   			{
-  				System.out.println("num="+i+" x="+this.coupsVoulus[i][0]+" y="+this.coupsVoulus[i][1]);
+  				System.out.println("num="+i+" x="+this.coupsVoulus[i][0]+" y="+this.coupsVoulus[i][1]);//pzs de aff_cp a cause de num qui serait plus la apres
   			}
   			
   			int rajoutL=0;
@@ -252,12 +252,12 @@ public class Triomino extends Partie {
   			while ((this.coupsPossibles[ind][0]!=this.coupsVoulus[rep][0]) || (this.coupsPossibles[ind][1]!=this.coupsVoulus[rep][1]))
   				ind++;
   			
-  			System.out.println("250");
-  			this.aff_cp();
+  			//System.out.println("250");
+  			//this.aff_cp();
   			this.coupsPossibles[ind]=this.coupsPossibles[this.nbrePositionsPossibles-1];//on echange les deux cases pour eviter d'avoir un trou en plein milieu du tableau en prenant la derniere case du tableau
   			
-  			System.out.println("252");
-  			this.aff_cp();
+  			//System.out.println("252");
+  			//this.aff_cp();
   			//this.aff_cv();
   			
   			this.nbrePositionsPossibles--;
@@ -482,9 +482,9 @@ public class Triomino extends Partie {
    		int[] valC=new int[3];
    		
    		//on regarde les triominos autour pour savoir si le triomino C est au dessus ou au dessous du triomino à regarder 
-   		System.out.println("verif du trio x="+x+" y="+y);
-   		if((x==-1)||(y==-1))
-   			this.aff_cp();
+   		//System.out.println("verif du trio x="+x+" y="+y);
+   		//if((x==-1)||(y==-1))
+   			//this.aff_cp();
    		if(this.plateau[x][y].get_occupation()==Endroit)//donc les trios autour sont à l'"Envers"
    			rajoutL=1;
    		else
