@@ -7,7 +7,7 @@ public class Pion {
     }
 
     private int[] valeurs;
-    private boolean occupation;
+    private boolean occupation=false;
 
     public void set_occupation(boolean occupation) {
     	this.occupation=occupation;
