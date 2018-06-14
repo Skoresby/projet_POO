@@ -1,13 +1,16 @@
 package launch;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Polygon;
 
+import javax.swing.JComponent;
 import javax.swing.JPanel;
 
 public class interface_t extends JPanel {
 	public interface_t() {
+		super();
 	}
 
 	private int cd = 40;
@@ -24,7 +27,7 @@ public class interface_t extends JPanel {
 	public void paintComponent(Graphics g) {
 		// super.paintComponent(g);
 		int i, j, exist[], exist2[], exist3[], exist4[];
-
+		setSize(800,200);
 		char n = 'O';
 		for (i = 0; i < 20; i++) {
 			for (j = 0; j < 20; j++) {

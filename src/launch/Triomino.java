@@ -1,5 +1,6 @@
 package launch;
 
+import java.awt.Graphics;
 import java.util.*;
 
 import launch.Joueur;
@@ -650,6 +651,12 @@ public class Triomino extends Partie {
 	}
 
 	public void afficher() {
+		Joueur[] joueur = new Joueur[4];
+		int actuel=1;
+		//Fenetre fen= new Fenetre( this, joueur, actuel);
+		Graphics g = null;
+		fenetre_t test = new fenetre_t(this, joueur, actuel, g);
+		//triangle_m test = new triangle_m(this, joueur, actuel);
 	}
 
 	public Pion[] get_tableau() {

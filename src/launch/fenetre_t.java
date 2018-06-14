@@ -3,14 +3,19 @@ package launch;
 import java.awt.Color;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+
 import java.awt.Graphics;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.BorderLayout;
 
 public class fenetre_t extends JFrame implements MouseListener {
+	public static final int HEIGHT=750; //HAUTEUR
+	public static final int WIDTH=1300; //LARGUEUR
 	private int m_choisi;
 	private Pion[] hand2;
 	private interface_t un = new interface_t();
@@ -18,16 +23,27 @@ public class fenetre_t extends JFrame implements MouseListener {
 	private int mode = 0;
 	int[] values = new int [3];
 	int[][] cp_possible = new int[56][2];
+	private Triomino trio;
+	private Joueur[] joueur;
+	private int actuel;
 
-	public fenetre_t() {
-		Triomino logic = new Triomino(); // Appel d'un objet triomino qui gère la logique de jeu
-		int test[] = { 1, 2, 3 };
+	public fenetre_t(Triomino trio,Joueur[] joueur, int actuel,Graphics g) {
+		super();
+		this.trio=trio;
+		this.joueur=joueur;
+		this.actuel=actuel;
+		
+		this.setContentPane(new Panneau(g,trio,joueur,actuel));
+		//Triomino logic = new Triomino(); // Appel d'un objet triomino qui gère la logique de jeu
+		//int test[] = { 1, 2, 3 };
 
-		logic.init_plateau();
+		/*logic.init_plateau();
 		logic.init_tab();
 
 		plateau = logic.get_plateau();
 		hand2 = logic.get_tableau();
+		plateau[0][10].set_valeurs(test);
+		plateau[0][5].set_valeurs(test);
 		plateau[10][10].set_valeurs(test);
 		plateau[10][13].set_valeurs(test);
 		plateau[10][11].set_valeurs(test);
@@ -50,35 +66,29 @@ public class fenetre_t extends JFrame implements MouseListener {
 		un.set_data(plateau);
 		un.set_hand(hand2);
 		un.set_mode(0); // 0 mode normale, 1 mode insertion de triomino
-		un.addMouseListener(this);
+		un.setSize(1, 500);
+        JScrollPane scrollPane = new JScrollPane(un);
+        scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
+        scrollPane.setBounds(50, 30, 300, 50);
+        this.add(un,BorderLayout.CENTER);
+		//un.addMouseListener(this);
+		//un.add(scrollPane);*/
 		//
+		
+		ImageIcon image = new ImageIcon("trio_coin.png");
+		this.setIconImage(image.getImage());
+		this.setSize(WIDTH,HEIGHT);
+		
 		// getContentPane().add(panel, BorderLayout.CENTER);
 		// pan.setBackground(Color.WHITE);
 		// this.setContentPane(pan);
-		this.setContentPane(un);
+		//this.setContentPane(un);
 		this.setVisible(true);
 	}
 
 	@Override
-	public void mouseClicked(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void mouseEntered(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void mouseExited(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void mousePressed(MouseEvent e) {
+	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
 		int i;
 		int posX;
@@ -127,6 +137,24 @@ public class fenetre_t extends JFrame implements MouseListener {
 			}
 		}
 		repaint();
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void mouseExited(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void mousePressed(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override

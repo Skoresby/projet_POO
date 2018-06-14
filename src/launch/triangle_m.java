@@ -9,14 +9,14 @@ import java.lang.Thread;
 public class triangle_m {
 	
 	   public triangle_m(){
-		   int i;
+		  /* int i;
 		   int vals [] = {1,1,1};
 		   Pion[] tester = new Pion[40*40];
 		   //Pion[] hand = new Pion [10];
 		   //Triomino  jeu = new Triomino();
 		   //tester[18].set_occupation(true);
 		   fenetre_t test = new fenetre_t();
-		   System.out.println("Ending");
+		   System.out.println("Ending");*/
 			
 	   }	
 }
