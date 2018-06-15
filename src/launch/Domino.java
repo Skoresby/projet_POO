@@ -66,6 +66,12 @@ public class Domino extends Partie implements ActionListener {
 
 	}
 
+	/*les fonction théorique sont mise en commin avec les fonction graphiques mais aucune fonction 
+	 * theorique (exectée init!tab nest appelée car nous n'avons pas encore trouvé comment faire la laison entres elles
+	 */
+	
+	
+	//fonction permettant de determiner quel joueur debute la partie 
 	int premier_a_jouer() {
 		 
 	    	int numCase=-1,i=0,tem=6,one=0,Max=0;// car 6 est le plus grand double
@@ -118,10 +124,9 @@ public class Domino extends Partie implements ActionListener {
 	    	 return one;
 	    }
 	
-
+//initialise le tableau permettant de fiare un partie de jeu
 	Pion[] init_tab() {
-		// Pion[] aFaire=new Pion[28];//j ai mis this.tableau
-		// return aFaire;
+		
 		tableau = new Pion[28];
 		int numCase = 0;
 		Pion transition;
@@ -149,7 +154,6 @@ public class Domino extends Partie implements ActionListener {
 		}
 		aff_tab();
 		return tableau;
-		// listImg=new LesDominos(this.tableau);
 	}
 
 	public void aff_tab() {
@@ -184,11 +188,184 @@ public class Domino extends Partie implements ActionListener {
 		Pion[][] a = new Pion[56][56];
 		return a;
 	}
+	void placer_pion(int indice)
+    {
+    	int i=0,j=0,k=0,l=0;// i et j sont les indices de la case correspondant au dernier domino placé sur le plateau
+    	// k et l sont les indices de la case correspondant au choix de placement de l'utilsateur à récuperer normalement
+    	// (à déterminer à partir de son clic )
+    	int []valP1=this.plateau[i][j].get_valeurs();
+    	int []valP2=this.tableau[indice].get_valeurs();
+    	int []valcase =new int[2];
+    	boolean occup1=this.plateau[i][j].get_occupation();
+    	
+    
+        if (occup1==Horizontal)
+        {
+        	
+        		if((valP1[1]==valP2[0])&&(valP1[1]!=valP2[1])&&(valP1[0]!=valP2[0])&&(valP1[0]!=valP2[1])&&(valP1[0]!=valP1[1]))//val2 de p1 = val1 de p1 uniquement et p1 non double
+            	{
+            				
+        			this.plateau[i+1][j].set_valeurs(valP2);
+        			this.plateau[i+1][j].set_occupation(this.tableau[indice].get_occupation());	
+        			this.tableau[indice].set_occupation(Joue);
+        	    }
+        		else if((valP1[1]==valP2[1])&&(valP1[1]!=valP2[0])&&(valP1[0]!=valP2[0])&&(valP1[0]!=valP2[1])&&(valP1[0]!=valP1[1]))//val2 de p1 = val2 de p1 uniquement et p1 double
+        		{
+        			
+        			this.plateau[i+1][j].set_valeurs(valP2);
+        			this.plateau[i+1][j].set_occupation(Vertical);
+        			this.tableau[indice].set_occupation(Joue);
+        		}
+        		else if((valP1[0]==valP2[0])&&(valP1[0]!=valP2[1])&&(valP1[1]!=valP2[0])&&(valP1[1]!=valP2[1])&&(valP1[0]!=valP1[1]))//val1 de p1 = val1 de p1 uniquement et p1 non double
+        		{
+        			
+        			this.plateau[i-1][j].set_valeurs(valP2);
+        			this.plateau[i-1][j].set_occupation(Vertical);
+        			this.tableau[indice].set_occupation(Joue);
+        		}
+        		else if((valP1[0]==valP2[1])&&(valP1[0]!=valP2[0])&&(valP1[1]!=valP2[0])&&(valP1[1]!=valP2[1])&&(valP1[0]!=valP1[1]))////val1 de p1 = val2 de p1 uniquement et p1 non double
+        		{
+        			
+        			this.plateau[i-1][j].set_valeurs(valP2);
+        			this.plateau[i-1][j].set_occupation(Vertical);	
+        			this.tableau[indice].set_occupation(Joue);
+        		}
+        		else if((valP1[0]==valP2[1])&&(valP1[0]==valP2[0])&&(valP1[0]!=valP1[1])&&(valP1[0]!=valP1[1]))//val1 de p1 est égale aux valeurs du double p2 et p1 non double
+        		{
+        			
+        			this.plateau[i-1][j].set_valeurs(valP2);
+        			this.plateau[i-1][j].set_occupation(this.tableau[indice].get_occupation());	
+        			this.tableau[indice].set_occupation(Joue);
+        		}
+        		else if((valP1[1]==valP2[1])&&(valP1[1]==valP2[0])&&(valP1[0]!=valP1[1]))//val2 de p1 est égale aux valeurs du double p2 et p1 non double
+        		{
+        			
+        			this.plateau[i+1][j].set_valeurs(valP2);
+        			this.plateau[i+1][j].set_occupation(this.tableau[indice].get_occupation());
+        			this.tableau[indice].set_occupation(Joue);
+        		}
+        		else if ((valP1[0]==valP2[1])&&(valP1[1]==valP2[0])&&(valP1[0]!=valP1[1]))//val1 de p1 =val2 de p2  et val2 de p1 = val1 de p2 besoin de k et l
+        		{
+        			
+        				this.plateau[k][l].set_valeurs(valP2);
+            			this.plateau[k][l].set_occupation(this.tableau[indice].get_occupation());
+            			this.tableau[indice].set_occupation(Joue);
+        			
+        		}
+        		else if((valP1[0]==valP1[1])&&(valP1[1]==valP2[0])&&(valP2[0]!=valP2[1]))//le pion p1 est un double et sa val1 = val1 de p2 besoin de k et de l
+        		{
+        			
+        			if(k==i+1)
+        			{
+        				this.plateau[k][l].set_valeurs(valP2);
+            			this.plateau[k][l].set_occupation(this.tableau[indice].get_occupation());
+            			this.tableau[indice].set_occupation(Joue);
+        			}
+        			else
+        			{
+        				this.plateau[k][l].set_valeurs(valP2);
+            			this.plateau[k][l].set_occupation(Vertical);
+            			this.tableau[indice].set_occupation(Joue);
+        			}
+        		}
+        		else if((valP1[0]==valP1[1])&&(valP1[1]==valP2[1])&&(valP2[0]!=valP2[1]))//le pion p1 est un double et sa val1 = val2 de p2
+        		{
+        			
+        			if(k==i-1)
+        			{
+        				this.plateau[k][l].set_valeurs(valP2);
+            			this.plateau[k][l].set_occupation(this.tableau[indice].get_occupation());
+            			this.tableau[indice].set_occupation(Joue);
+        			}
+        			else
+        			{
+        				this.plateau[k][l].set_valeurs(valP2);
+            			this.plateau[k][l].set_occupation(Vertical);
+            			this.tableau[indice].set_occupation(Joue);
+        			}
+        		}
+        		else
+        		{
+        			System.out.println("Autre cas");
+        		}
+  
+        }
+        if (occup1==Vertical)
+        {
+        	if((valP1[0]==valP2[0])&&(valP1[0]!=valP2[1])&&(valP1[1]!=valP2[0])&&(valP1[1]!=valP2[1])&&(valP1[0]!=valP1[1]))//val1 de p1 = val1 de p2 uniquement et p1 non double
+        	{
+        		
+    			this.plateau[i][j-1].set_valeurs(valP2);
+    			this.plateau[i][j-1].set_occupation(Vertical);	
+    			this.tableau[indice].set_occupation(Joue);
+    	    }
+        	else if((valP1[0]==valP2[1])&&(valP1[0]!=valP2[0])&&(valP1[1]!=valP2[0])&&(valP1[1]!=valP2[1])&&(valP1[0]!=valP1[1]))//val1 de p1 = val2 de p2 uniquement et p1 non double
+    		{
+    			
+    			this.plateau[i][j-1].set_valeurs(valP2);
+    			this.plateau[i][j-1].set_occupation(Vertical);	
+    			this.tableau[indice].set_occupation(Joue);
+    		}
+        	else if((valP1[1]==valP2[0])&&(valP1[1]!=valP2[1])&&(valP1[0]!=valP2[0])&&(valP1[0]!=valP2[1])&&(valP1[0]!=valP1[1]))//val2 de p1 = val1 de p2 uniquement et p1 non double
+    		{
+    			
+    			this.plateau[i][j-1].set_valeurs(valP2);
+    			this.plateau[i][j-1].set_occupation(Vertical);	  
+    			this.tableau[indice].set_occupation(Joue);
+    		}
+        	else if((valP1[1]==valP2[1])&&(valP1[1]!=valP2[0])&&(valP1[0]!=valP2[0])&&(valP1[0]!=valP2[1])&&(valP1[0]!=valP1[1]))//val2 de p1 = val2 de p2 uniquement et p1 non double
+    		{
+    			
+    			this.plateau[i][j+1].set_valeurs(valP2);
+    			this.plateau[i][j+1].set_occupation(Vertical);
+    			this.tableau[indice].set_occupation(Joue);
+    		}
+        	else if((valP1[0]==valP2[0])&&(valP1[0]==valP2[1])&&(valP1[1]!=valP2[0])&&(valP1[1]!=valP2[1])&&(valP1[0]!=valP1[1]))//val1 de p1 est égale aux valeurs du double p2 et p1 non double
+    		{
+    			
+        		if(k==i-1)
+    			{
+    				this.plateau[k][l].set_valeurs(valP2);
+        			this.plateau[k][l].set_occupation(this.tableau[indice].get_occupation());
+        			this.tableau[indice].set_occupation(Joue);
+    			}
+    			else
+    			{
+    				this.plateau[k][l].set_valeurs(valP2);
+        			this.plateau[k][l].set_occupation(Vertical);
+        			this.tableau[indice].set_occupation(Joue);
+    			}	
+        		
+        		
+    		}
+        	else if((valP1[1]==valP2[0])&&(valP1[1]==valP2[0])&&(valP1[0]!=valP2[1])&&(valP1[1]!=valP2[1])&&(valP1[0]!=valP1[1]))//val2 de p1 est égale aux valeurs du double p2 et p1 non double
+    		{
+    			
+        		if(k==i+1)
+    			{
+    				this.plateau[k][l].set_valeurs(valP2);
+        			this.plateau[k][l].set_occupation(this.tableau[indice].get_occupation());
+        			this.tableau[indice].set_occupation(Joue);
+    			}
+    			else
+    			{
+    				this.plateau[k][l].set_valeurs(valP2);
+        			this.plateau[k][l].set_occupation(Vertical);
+        			this.tableau[indice].set_occupation(Joue);
+    			}	
+    		}
+        	else
+    		{
+    			System.out.println("Autre cas");
+    		}
 
-	void placer_pion(int indice) {
-		return;
-
-	}
+        	
+        }
+    	
+    	return;
+ 
+		
+	 }
 
 	void aide() {
 	}

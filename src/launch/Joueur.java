@@ -11,7 +11,7 @@ public class Joueur {
     public Joueur() {
     	this.score=0;//initialisation
     	
-    }//
+    }
     
     protected Scanner sc = new Scanner(System.in);
     private String pseudo;

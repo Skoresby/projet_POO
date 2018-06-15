@@ -96,7 +96,7 @@ abstract class Partie extends Jeu implements MouseListener {
 	}
 
 	public void annuler_coup() {
-		// TODO implement here//
+		// TODO implement here
 	}
 
 	public void afficher_base_jeu() {

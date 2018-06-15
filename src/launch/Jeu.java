@@ -42,7 +42,7 @@ public class Jeu extends JFrame implements MouseListener{
 	    public static final int y_nom2 =(int)(larg_Fenetre/(6.88));
 	    public static final int y_nom1 =(int)(larg_Fenetre/(5.69));
 
-//
+
 
 
 

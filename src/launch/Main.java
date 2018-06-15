@@ -7,7 +7,7 @@ import javax.swing.JPanel;
 public class Main extends JFrame{
 
 	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);//
+		Scanner sc = new Scanner(System.in);
 		
 		System.out.println("je suis dans le bon dossier!!!");
 		Jeu jeu = new Jeu();
