@@ -80,7 +80,7 @@ class LesDominos extends JPanel {
 		int b = this.getHeight() - 260;
 		int comp = valeur.getnbre();
 		System.out.println("ld " + comp);
-		int modu;
+		int modu;//
 		modu = comp % 2;
 		System.out.println("103 " + modu);
 		int RnbreRestant;

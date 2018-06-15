@@ -74,7 +74,7 @@ public class Domino extends Partie implements ActionListener {
 	    	int [] val =new int[2];
 	    	do
 	    	{
-	    		if(tem>=0)
+	    		if(tem>=0)//
 	    		{
 	    			do
 	    			{

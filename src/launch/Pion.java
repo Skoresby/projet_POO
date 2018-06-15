@@ -13,7 +13,7 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 
 public class Pion  extends JPanel implements MouseListener {
-
+//
 	
   
     //constructeur

@@ -277,7 +277,7 @@ public class Triomino extends Partie {
     		else 
     			count++;
     	}
-    	System.out.println(" ");
+    	System.out.println(" ");//
     	return deb_main;
     }
   //methodes abstraites
