@@ -25,7 +25,7 @@ public class Triomino extends Partie {
     	this.nbreCoupsVoulus=0;
     	
 		// initialisation du tableau coupsPossibles
-    	this.coupsPossibles=new int [58][2];//a chaque fois qu on rajoute un trio, on rajoute une possibilité de plus par rapport aux trois cotés initiaux.
+    	this.coupsPossibles=new int [58][2];//a chaque fois qu on rajoute un trio, on rajoute une possibilitÃ© de plus par rapport aux trois cotÃ©s initiaux.
     	//coupsPossibles represente les coordonnees du plateau ou il est possible de jouer
     	
     	this.coupsVoulus=new int [58][2];
@@ -85,7 +85,7 @@ public class Triomino extends Partie {
     	
     }
 
-    public int verif_coll_3_pieces(int[] A, int[] B, int[] C, int[] X, boolean posAPlacer) {// X est le trio à placer
+    public int verif_coll_3_pieces(int[] A, int[] B, int[] C, int[] X, boolean posAPlacer) {// X est le trio Ã  placer
     	int tourne = -1;
 		int ajout = 0;
 
@@ -171,7 +171,7 @@ public class Triomino extends Partie {
 		if (coteCommun == 0)
 			cote = coteCommun;
 		else
-			cote = coteCommun % 2 + 1;// le numero de valeur à regarder est 1 si le cote manquant est 2 et inversement
+			cote = coteCommun % 2 + 1;// le numero de valeur Ã  regarder est 1 si le cote manquant est 2 et inversement
 		// pour les commentaires, X est le trio aPlacer
 
 		if(coteCommun==2)//A
@@ -430,7 +430,7 @@ public class Triomino extends Partie {
 				indice++;
 			}
 			count++;
-			System.out.println("432 count=" + count + " indice=" + indice);
+			//System.out.println("432 count=" + count + " indice=" + indice);
 		} while (rep >= count);
 		count--;
 
@@ -568,7 +568,7 @@ public class Triomino extends Partie {
 			if (joueur[joueur_act].get_type() == 1)// humain
 			{
 				System.out.println("a quel emplacement le placer? Emplacement dispos :");
-				for (int i = 0; i < this.nbreCoupsVoulus; i++)// affichage des possibilités
+				for (int i = 0; i < this.nbreCoupsVoulus; i++)// affichage des possibilitÃ©s
 				{
 					System.out.println("num=" + i + " x=" + this.coupsVoulus[i][0] + " y=" + this.coupsVoulus[i][1]);
 				}
@@ -602,7 +602,7 @@ public class Triomino extends Partie {
 			System.out.println("485 score=" + score);
 			joueur[joueur_act].set_score(score);
 
-			// on recherche dans le tableau des coupsPossibles ou se situe le trio joué
+			// on recherche dans le tableau des coupsPossibles ou se situe le trio jouÃ©
 			int ind = 0;
 			while ((this.coupsPossibles[ind][0] != this.coupsVoulus[rep][0])
 					|| (this.coupsPossibles[ind][1] != this.coupsVoulus[rep][1]))
@@ -622,7 +622,7 @@ public class Triomino extends Partie {
 			this.coupsPossibles[this.nbrePositionsPossibles][1] = -1;// on reinitialise la case pour pas qu'elle soit en
 																		// double
 
-			// on regarde la disponibilité des 3 cases autour pour remplir coupsPossibles
+			// on regarde la disponibilitÃ© des 3 cases autour pour remplir coupsPossibles
 			Pion A = this.plateau[x][y - 1];
 			int[] valA = A.get_valeurs();
 			if (existe_deja_CP(x, y - 1))
@@ -648,7 +648,7 @@ public class Triomino extends Partie {
 				rajoutL = 1;
 			else
 				rajoutL = -1;
-			Pion C = this.plateau[x + rajoutL][y + rajoutL];// car le trio du dessous/dessus est décalé dans le tableau
+			Pion C = this.plateau[x + rajoutL][y + rajoutL];// car le trio du dessous/dessus est dÃ©calÃ© dans le tableau
 			int[] valC = C.get_valeurs();
 			if ((valC[0] == -1) && (existe_deja_CP(x + rajoutL, y + rajoutL) == false))// donc la case au dessus/dessous
 																						// est libre
@@ -724,7 +724,7 @@ public class Triomino extends Partie {
    			 this.plateau[i][j]=new Pion();
    			 this.plateau[i][j].set_valeurs(new int[3]);
    			 this.plateau[i][j].set_valeurs(vals);
-   			 if(j%2==0)//donc le triomino est à l endroit
+   			 if(j%2==0)//donc le triomino est Ã  l endroit
    				 this.plateau[i][j].set_occupation(Endroit);
    			 else
    				 this.plateau[i][j].set_occupation(Envers);
@@ -769,7 +769,7 @@ public class Triomino extends Partie {
 		int[] peutEtreJoue = new int[joueur[joueur_act].get_nbre_piece()];// on met dedans tous les trios que le joueur
 																			// peut placer sur le jeu
 		int nbrePeutEtreJoue = 0;
-		// on recupere les indices des pions pouvant etre joués
+		// on recupere les indices des pions pouvant etre jouÃ©s
 		for (int i = deb_main; i < deb_main + joueur[joueur_act].get_nbre_piece(); i++) {
 			if (this.tableau[i].get_occupation() == Joue)
 				countJoue++;
@@ -858,7 +858,7 @@ aPlacer = this.tableau[indice].get_valeurs();
 String val = new String();
 
 // faire plateau coupsPossibles
-if ((this.coupsPossibles[0][0] == 56) && (this.coupsPossibles[0][1] == 56))// c est le premier coup à jouer
+if ((this.coupsPossibles[0][0] == 56) && (this.coupsPossibles[0][1] == 56))// c est le premier coup Ã  jouer
 {
 
 coll = -1;// pour ne pas remettre dans le tableau une 2eme fois 56 56
@@ -892,13 +892,13 @@ int[] valB = new int[3];
 int[] valC = new int[3];
 
 // on regarde les triominos autour pour savoir si le triomino C est au dessus ou
-// au dessous du triomino à regarder
+// au dessous du triomino Ã  regarder
 
 if ((x == -1) || (y == -1)) {
 System.out.println("verif du trio x=" + x + " y=" + y);
 this.aff_cp();
 }
-if (this.plateau[x][y].get_occupation() == Endroit)// donc les trios autour sont à l'"Envers"
+if (this.plateau[x][y].get_occupation() == Endroit)// donc les trios autour sont Ã  l'"Envers"
 rajoutL = 1;
 else
 rajoutL = -1;
@@ -908,7 +908,7 @@ A = this.plateau[x][y + 1];// le trio deja place est a droite, donc on veut plac
 B = this.plateau[x][y - 1];// le trio deja place est a gauche, donc celui qu on veut placer celui de droite
 C = this.plateau[x + rajoutL][y + rajoutL];// au dessus ou en dessous
 
-// on recupere les valeurs pour savoir si la case est occupée ou non
+// on recupere les valeurs pour savoir si la case est occupÃ©e ou non
 valA = A.get_valeurs();
 valB = B.get_valeurs();
 valC = C.get_valeurs();
@@ -961,7 +961,7 @@ tourne[this.nbreCoupsVoulus + 2] = retourTourne;
 coll = 0;
 }
 } else if (valA[0] != -1) {
-if (this.plateau[x][y].get_occupation() == Endroit)// donc les trios autour sont à l'"Envers"
+if (this.plateau[x][y].get_occupation() == Endroit)// donc les trios autour sont Ã  l'"Envers"
 cote = 1;
 else
 cote = 2;
@@ -976,12 +976,12 @@ tourne[this.nbreCoupsVoulus + 2] = retourTourne;
 coll = 0;
 }
 } else if (valB[0] != -1) {
-if (this.plateau[x][y].get_occupation() == Endroit)// donc les trios autour sont à l'"Envers"
+if (this.plateau[x][y].get_occupation() == Endroit)// donc les trios autour sont Ã  l'"Envers"
 cote = 2;
 else
 cote = 1;
 retourTourne = verif_coll_1_piece(valB, aPlacer, cote);// on envoie le cote correspondant, il est
-											// différent selon si le triomino est a l
+											// diffÃ©rent selon si le triomino est a l
 											// endroit ou a l envers
 if ((retourTourne != -1) && (coll < 2)) {
 coll = 1;
@@ -1048,7 +1048,7 @@ return tourne;
 
 			if (num == -3) {
 				if (temPioche >= 3)
-					System.out.println("tu as trop pioché");
+					System.out.println("tu as trop piochÃ©");
 				else if (this.pioche == Vide)
 					System.out.println("la pioche est vide");
 				else {
