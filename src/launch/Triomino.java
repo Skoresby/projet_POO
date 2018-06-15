@@ -736,7 +736,19 @@ public class Triomino extends Partie {
     public void piocher() {
     }
 
-    public void afficher() {
+    public void afficher(Joueur [] joueur, int joueurAct) {
     }
+
+	@Override
+	boolean partie_gagnee() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	boolean coup_possible() {
+		// TODO Auto-generated method stub
+		return false;
+	}
 
 }
