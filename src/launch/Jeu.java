@@ -52,6 +52,7 @@ public class Jeu extends JFrame {
 		else
 		{
 			jeton=new Triomino();
+			
 		}
     	
     	return jeton;

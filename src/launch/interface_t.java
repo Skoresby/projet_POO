@@ -1,13 +1,18 @@
 package launch;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Polygon;
 
 import javax.swing.JPanel;
+import javax.swing.JScrollBar;
 
 public class interface_t extends JPanel {
 	public interface_t() {
+		scroll.setOrientation(JScrollBar.HORIZONTAL);
+		add(scroll);
+		scroll.setPreferredSize(new Dimension(1200,15));
 	}
 
 	private int cd = 40;
@@ -19,6 +24,7 @@ public class interface_t extends JPanel {
 	Pion[] hand = new Pion[10];
 	private int[][] cp_possibles = new int[56][2];
 	int mode; // mode insertion de piece ou mode sans insertion de pièces (0 sans insertion, 1
+	private final JScrollBar scroll = new JScrollBar();
 				// av insertion)
 
 	public void paintComponent(Graphics g) {
@@ -31,77 +37,30 @@ public class interface_t extends JPanel {
 
 				exist = tab[i][j].get_valeurs();
 				// System.out.println(exist[1]);
-				if (exist[1] != -1) {
+				if (exist[1] != -1) { // si il n'existe pas (la valeur -1 représente une piece non présente), on n'affichera pas de triomino
 
 					if (i % 2 == 0) {
 						if (j % 2 == 0) {
 							System.out.println("sens normal");
-							drawTrio_fi(g, x1 + j * cd, y1 + i * cd, tab[i][j]);
-							/*
-							 * if (mode == 1) { try { exist2 = tab[i][j + 1].get_valeurs(); exist3 =
-							 * tab[i][j - 1].get_valeurs(); exist4 = tab[i + 1][j].get_valeurs(); if
-							 * (exist2[1] == -1) { drawPossibility(g, x1 + j * cd + 20, y1 + i * cd);
-							 * System.out.println(exist2[1] + "" + exist3[1] + "" + exist4[1]);
-							 * 
-							 * } if (exist3[1] == -1) { drawPossibility(g, x1 + j * cd - 30, y1 + i * cd); }
-							 * if (exist4[1] == -1) { drawPossibility(g, x1 + j * cd - 5, y1 + i * cd + 45);
-							 * } } catch (Exception e) {
-							 * 
-							 * } }
-							 */
+							drawTrio_fi(g, x1 + j * cd, y1 + i * cd, tab[i][j]); // affichage en fonction de i et j pour le décalage
+	
 
 						} else {
 							drawTrio_fo(g, x1 + j * cd, y1 + i * cd + cd, tab[i][j]);
 							System.out.println("sens inverse");
-							/*
-							 * if (mode == 1) { try { exist2 = tab[i][j + 1].get_valeurs(); exist3 =
-							 * tab[i][j - 1].get_valeurs(); exist4 = tab[i + 1][j].get_valeurs();
-							 * System.out.println(exist2[1] + "" + exist3[1] + "" + exist4[1]); if
-							 * (exist2[1] == -1) { drawPossibility(g, x1 + j * cd + 35, y1 + i * cd + 15);
-							 * 
-							 * } if (exist3[1] == -1) { drawPossibility(g, x1 + j * cd - 45, y1 + i * cd +
-							 * 15);
-							 * 
-							 * } if (exist4[1] == -1) {
-							 * 
-							 * drawPossibility(g, x1 + j * cd - 5, y1 + i * cd - 15); } } catch (Exception
-							 * e) {
-							 * 
-							 * } }
-							 */
+
 
 						}
-					} else { // ligne decalé
+					} else { // ligne decalé, on veut que les triomino soit symetrique dans le sens vertical
 						if (j % 2 == 0) {
 							System.out.println("sens normal");
-							drawTrio_fi(g, x1 + j * cd + cd, y1 + i * cd, tab[i][j]);
+							drawTrio_fi(g, x1 + j * cd + cd, y1 + i * cd, tab[i][j]); 
 
-							/*
-							 * if (mode == 1) { try { exist2 = tab[i][j + 1].get_valeurs(); exist3 =
-							 * tab[i][j - 1].get_valeurs(); exist4 = tab[i + 1][j].get_valeurs();
-							 * System.out.println(exist2[1] + exist3[1] + exist4[1]); if (exist2[1] == -1) {
-							 * drawPossibility(g, x1 + j * cd - 30 + cd, y1 + i * cd); } if (exist3[1] ==
-							 * -1) { drawPossibility(g, x1 + j * cd + 20 + cd, y1 + i * cd); } if (exist4[1]
-							 * == -1) { drawPossibility(g, x1 + j * cd - 5 + cd, y1 + i * cd + 45); } }
-							 * catch (Exception e) {
-							 * 
-							 * } }
-							 */
+
 						} else {
 							System.out.println("sens inverse");
 							drawTrio_fo(g, x1 + j * cd + cd, y1 + i * cd + cd, tab[i][j]);
-							/*
-							 * if (mode == 1) { try { exist2 = tab[i][j + 1].get_valeurs(); exist3 =
-							 * tab[i][j - 1].get_valeurs(); exist4 = tab[i + 1][j].get_valeurs();
-							 * System.out.println(exist2[1] + exist3[1] + exist4[1]); if (exist2[1] == -1) {
-							 * drawPossibility(g, x1 + j * cd - 45 + cd, y1 + i * cd + 15); } if (exist3[1]
-							 * == -1) { drawPossibility(g, x1 + j * cd + 35 + cd, y1 + i * cd + 15); } if
-							 * (exist4[1] == -1) { drawPossibility(g, x1 + j * cd - 5 + cd, y1 + i * cd -
-							 * 15); } } catch (Exception e) {
-							 * 
-							 * } }
-							 */
-							// drawPossibility(g,x1 + j * cd+cd,y1 + i * cd);
+
 						}
 						// Fin affichage des triominos
 						// Debut affichage des points d'insertions si mode == 1
@@ -117,18 +76,18 @@ public class interface_t extends JPanel {
 				}
 			}
 		}
-		if (mode == 1) {
+		if (mode == 1) { // affichage des cout possible pour l'utilisateur actuel
 			System.out.println("mode insertion");
-			for (i = 0; i < 56; i++) {
+			for (i = 0; i < 1; i++) {
 
 				
 					System.out.println("dessin cercle");
-					drawPossibility(g, x1 + cp_possibles[i][0] * cd, y1 + cp_possibles[i][1] * cd);
+					drawPossibility(g, x1 + cp_possibles[i][0] * cd, y1 + cp_possibles[i][1] * cd);//cordonees
 
 
 			}
 		}
-		for (i = 0; i < 10; i++) {
+		for (i = 0; i < 10; i++) { // affichage de main avant integration partie oceane
 			if (hand[i].get_occupation() == true) {
 				drawTrio_fo(g, x2 + i * cd * 2, y2, hand[i]);
 				/*
@@ -147,7 +106,7 @@ public class interface_t extends JPanel {
 		hand = ttab;
 	}
 
-	public void drawTrio_fi(Graphics g, int cX, int cY, Pion p) {
+	public void drawTrio_fi(Graphics g, int cX, int cY, Pion p) { // triomino position normale
 		int data[] = p.get_valeurs();
 		g.drawLine(cX, cY, cX - cd, cY + cd);
 		g.drawLine(cX, cY, cX + cd, cY + cd);
@@ -157,7 +116,7 @@ public class interface_t extends JPanel {
 		g.drawString(String.valueOf(data[2]), cX + 20, cY + cd);
 	}
 
-	public void drawTrio_fo(Graphics g, int cX, int cY, Pion p) {
+	public void drawTrio_fo(Graphics g, int cX, int cY, Pion p) { // triomino position inverse
 		int data[] = p.get_valeurs();
 		g.drawLine(cX, cY, cX - cd, cY - cd);
 		g.drawLine(cX, cY, cX + cd, cY - cd);
@@ -168,9 +127,7 @@ public class interface_t extends JPanel {
 	}
 
 	public void drawPossibility(Graphics g, int cX, int cY) {
-		// g.setColor(Color.LIGHT_GRAY);
 		g.fillOval(cX, cY+5, 8, 8);
-		// g.setColor(Color.BLACK);
 	}
 
 	public void set_coup_possibles(int[][] tab) {
