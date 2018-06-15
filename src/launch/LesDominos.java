@@ -87,7 +87,8 @@ class LesDominos extends JPanel {
 		RnbreRestant=valeur.nbreDonR(joueurAct, joueur);
 		System.out.println("ld 83 " +RnbreRestant);
 		int con=(int) (Math.ceil(RnbreRestant/7));
-		int val=comp % con;
+		int val=comp % con;//ji
+		
 		System.out.println("la valeuar de retour de la division pour connaitre le debut de la main du jouer est "+val);
 		/*
 		 * for(int i = 0; i<this.bufferedImageb.length; i++) {
