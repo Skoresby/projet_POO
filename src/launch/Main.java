@@ -21,7 +21,7 @@ public class Main extends JFrame{
 		Jeu jeu = new Jeu();
 		Joueur joueur[] = new Joueur[4];
 
-		//Partie jeton = jeu.choix_jeu();
+		Partie jeton = jeu.choix_jeu();
 		//Domino dom= new Domino();
 		
 		//jeton.entrer_joueurs(joueur);
@@ -32,8 +32,9 @@ public class Main extends JFrame{
 		//Pion[]tableau=jeton.init_tab();
 		//Pion[][] plateau=jeton.init_plateau();
 		triangle_m aff = new triangle_m();
-		/*joueurAct=jeton.premier_a_jouer();		
-		do
+		joueurAct=jeton.premier_a_jouer();
+		
+		/*do
 		{
 			System.out.println("le joueur numero "+joueurAct+" commence");
 			indiceChoisi=jeton.choisir_coup(joueur, joueurAct);
