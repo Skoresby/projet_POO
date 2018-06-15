@@ -842,186 +842,185 @@ public class Triomino extends Partie {
    int[] coup_possible(int indice) { // retourne un tableau avec posable (0=non, 1=oui) en premiere case
 		// nbreDeCollisions en deuxieme case
 		//et nbreDeTours ensuite, selon la case dans laquelle on va jouer
-int[] aPlacer = new int[3];
-int coll = 0;
-int posable = 0;
-int[] tourne = new int[this.nbrePositionsPossibles + 2];// vaut -1 si le coup n est pas possible, et 0, 1 ou 2
-								// selon combien de fois faut faire tourner le trio pour
-								// qu'il rentre
-// la premiere case dit si le triomino est posable, la deuxieme contient la
-// valeur de coll, la suite le nbre de tour que la piece doit faire. ce tableau
-// sera surement trop grand, mais on ne connait pas sa taille exacte a ce
-// moment, donc on a pris sa taille maximale possible
-tourne[0] = -5;
-int retourTourne = -2;
-aPlacer = this.tableau[indice].get_valeurs();
-String val = new String();
+	int[] aPlacer = new int[3];
+	int coll = 0;
+	int posable = 0;
+	int[] tourne = new int[this.nbrePositionsPossibles + 2];// vaut -1 si le coup n est pas possible, et 0, 1 ou 2
+									// selon combien de fois faut faire tourner le trio pour
+									// qu'il rentre
+	// la premiere case dit si le triomino est posable, la deuxieme contient la
+	// valeur de coll, la suite le nbre de tour que la piece doit faire. ce tableau
+	// sera surement trop grand, mais on ne connait pas sa taille exacte a ce
+	// moment, donc on a pris sa taille maximale possible
+	tourne[0] = -5;
+	int retourTourne = -2;
+	aPlacer = this.tableau[indice].get_valeurs();
+	String val = new String();
 
-// faire plateau coupsPossibles
-if ((this.coupsPossibles[0][0] == 56) && (this.coupsPossibles[0][1] == 56))// c est le premier coup à jouer
-{
+	// faire plateau coupsPossibles
+	if ((this.coupsPossibles[0][0] == 56) && (this.coupsPossibles[0][1] == 56))// c est le premier coup à jouer
+	{
 
-coll = -1;// pour ne pas remettre dans le tableau une 2eme fois 56 56
-if (!existe_deja_CV(56, 56)) {
-this.coupsVoulus[this.nbreCoupsVoulus][0] = 56;
-this.coupsVoulus[this.nbreCoupsVoulus][1] = 56;
-this.nbreCoupsVoulus++;
+		coll = -1;// pour ne pas remettre dans le tableau une 2eme fois 56 56
+		if (!existe_deja_CV(56, 56)) {
+			this.coupsVoulus[this.nbreCoupsVoulus][0] = 56;
+			this.coupsVoulus[this.nbreCoupsVoulus][1] = 56;
+			this.nbreCoupsVoulus++;
 
-}
-posable = 1;
-tourne[0] = posable;
-tourne[1] = coll;
-tourne[2] = 0;
-return tourne;
-}
-int i;
-if(nbreCoupsVoulus==0)//sinon  c est que le tableau est deja rempli
-{
-for (i = 0; i < this.nbrePositionsPossibles; i++) {
-int x = this.coupsPossibles[i][0];
-int y = this.coupsPossibles[i][1];
-int rajoutL = 0;
-int cote = 0;
+		}
+		posable = 1;
+		tourne[0] = posable;
+		tourne[1] = coll;
+		tourne[2] = 0;
+		return tourne;
+	}
+	int i;
+	if(nbreCoupsVoulus==0)//sinon  c est que le tableau est deja rempli
+	{
+		for (i = 0; i < this.nbrePositionsPossibles; i++) {
+			int x = this.coupsPossibles[i][0];
+			int y = this.coupsPossibles[i][1];
+			int rajoutL = 0;
+			int cote = 0;
 
-Pion A = new Pion();
-Pion B = new Pion();
-Pion C = new Pion();
+			Pion A = new Pion();
+			Pion B = new Pion();
+			Pion C = new Pion();
 
-int[] valA = new int[3];
-int[] valB = new int[3];
-int[] valC = new int[3];
+			int[] valA = new int[3];
+			int[] valB = new int[3];
+			int[] valC = new int[3];
 
-// on regarde les triominos autour pour savoir si le triomino C est au dessus ou
-// au dessous du triomino à regarder
+			// on regarde les triominos autour pour savoir si le triomino C est au dessus ou
+			// au dessous du triomino à regarder
 
-if ((x == -1) || (y == -1)) {
-System.out.println("verif du trio x=" + x + " y=" + y);
-this.aff_cp();
-}
-if (this.plateau[x][y].get_occupation() == Endroit)// donc les trios autour sont à l'"Envers"
-rajoutL = 1;
-else
-rajoutL = -1;
+			if ((x == -1) || (y == -1)) {
+				System.out.println("verif du trio x=" + x + " y=" + y);
+				this.aff_cp();
+			}
+			if (this.plateau[x][y].get_occupation() == Endroit)// donc les trios autour sont à l'"Envers"
+			rajoutL = 1;
+			else
+			rajoutL = -1;
 
-// on nomme les cases alentours
-A = this.plateau[x][y + 1];// le trio deja place est a droite, donc on veut placer le trio a gauche
-B = this.plateau[x][y - 1];// le trio deja place est a gauche, donc celui qu on veut placer celui de droite
-C = this.plateau[x + rajoutL][y + rajoutL];// au dessus ou en dessous
+			// on nomme les cases alentours
+			A = this.plateau[x][y + 1];// le trio deja place est a droite, donc on veut placer le trio a gauche
+			B = this.plateau[x][y - 1];// le trio deja place est a gauche, donc celui qu on veut placer celui de droite
+			C = this.plateau[x + rajoutL][y + rajoutL];// au dessus ou en dessous
 
-// on recupere les valeurs pour savoir si la case est occupée ou non
-valA = A.get_valeurs();
-valB = B.get_valeurs();
-valC = C.get_valeurs();
+			// on recupere les valeurs pour savoir si la case est occupée ou non
+			valA = A.get_valeurs();
+			valB = B.get_valeurs();
+			valC = C.get_valeurs();
 
-if (this.tableau[indice].get_occupation() == Joue) {
-coll = -2;
-} else if ((valA[0] != -1) && (valB[0] != -1) && (valC[0] != -1))// cette case est entouree de triominos
-{
-retourTourne = verif_coll_3_pieces(valB, valA, valC, aPlacer, this.plateau[x][y].get_occupation());// azerty
-if (retourTourne != -1) {
-// System.out.println("573 ok");
-coll = 3;
-posable = 1;
-tourne[this.nbreCoupsVoulus + 2] = retourTourne;// on met dans la premiere case libre. comme un seul
-										// de ces if ou else if peut se faire, on est sur de
-										// pas ecraser de valeur
-} else// la piece n allait pas
-{
-coll = 0;
-}
-} else if ((valA[0] != -1) && (valB[0] != -1)) {
-retourTourne = verif_coll_2_pieces(valB, valA, aPlacer, 2, this.plateau[x][y].get_occupation());// azerty
-if ((retourTourne != -1) && (coll < 3)) {
-coll = 2;
-posable = 1;
-tourne[this.nbreCoupsVoulus + 2] = retourTourne;
-} else// la piece n allait pas ou on a deja trouve mieux
-{
-coll = 0;
-}
-} else if ((valA[0] != -1) && (valC[0] != -1)) {
-retourTourne = verif_coll_2_pieces(valA, valC, aPlacer, 0, this.plateau[x][y].get_occupation());
+			if (this.tableau[indice].get_occupation() == Joue) {
+				coll = -2;
+			} else if ((valA[0] != -1) && (valB[0] != -1) && (valC[0] != -1))// cette case est entouree de triominos
+			{
+				retourTourne = verif_coll_3_pieces(valB, valA, valC, aPlacer, this.plateau[x][y].get_occupation());// azerty
+				if (retourTourne != -1) {
+					// System.out.println("573 ok");
+					coll = 3;
+					posable = 1;
+					tourne[this.nbreCoupsVoulus + 2] = retourTourne;// on met dans la premiere case libre. comme un seul
+														// de ces if ou else if peut se faire, on est sur de
+														// pas ecraser de valeur
+				} else// la piece n allait pas
+				{
+					coll = 0;
+				}
+			} else if ((valA[0] != -1) && (valB[0] != -1)) {
+				retourTourne = verif_coll_2_pieces(valB, valA, aPlacer, 2, this.plateau[x][y].get_occupation());// azerty
+				if ((retourTourne != -1) && (coll < 3)) {
+					coll = 2;
+					posable = 1;
+					tourne[this.nbreCoupsVoulus + 2] = retourTourne;
+				} else// la piece n allait pas ou on a deja trouve mieux
+				{
+					coll = 0;
+				}
+			} else if ((valA[0] != -1) && (valC[0] != -1)) {
+				retourTourne = verif_coll_2_pieces(valA, valC, aPlacer, 0, this.plateau[x][y].get_occupation());
 
-if ((retourTourne != -1) && (coll < 3)) {
-coll = 2;
-posable = 1;
-tourne[this.nbreCoupsVoulus + 2] = retourTourne;
-} else// la piece n allait pas
-{
-coll = 0;
-}
-} else if ((valB[0] != -1) && (valC[0] != -1)) {
-retourTourne = verif_coll_2_pieces(valB, valC, aPlacer, 1, this.plateau[x][y].get_occupation());
-if ((retourTourne != -1) && (coll < 3)) {
-coll = 2;
-posable = 1;
-tourne[this.nbreCoupsVoulus + 2] = retourTourne;
-} else// la piece n allait pas
-{
-coll = 0;
-}
-} else if (valA[0] != -1) {
-if (this.plateau[x][y].get_occupation() == Endroit)// donc les trios autour sont à l'"Envers"
-cote = 1;
-else
-cote = 2;
+				if ((retourTourne != -1) && (coll < 3)) {
+					coll = 2;
+					posable = 1;
+					tourne[this.nbreCoupsVoulus + 2] = retourTourne;
+				} else// la piece n allait pas
+				{
+					coll = 0;
+				}
+			} else if ((valB[0] != -1) && (valC[0] != -1)) {
+				retourTourne = verif_coll_2_pieces(valB, valC, aPlacer, 1, this.plateau[x][y].get_occupation());
+				if ((retourTourne != -1) && (coll < 3)) {
+					coll = 2;
+					posable = 1;
+					tourne[this.nbreCoupsVoulus + 2] = retourTourne;
+				} else// la piece n allait pas
+				{
+					coll = 0;
+				}
+			} else if (valA[0] != -1) {
+				if (this.plateau[x][y].get_occupation() == Endroit)// donc les trios autour sont à l'"Envers"
+					cote = 1;
+				else
+					cote = 2;
 
-retourTourne = verif_coll_1_piece(valA, aPlacer, cote);
-if ((retourTourne != -1) && (coll < 2)) {
-coll = 1;
-posable = 1;
-tourne[this.nbreCoupsVoulus + 2] = retourTourne;
-} else// la piece n allait pas
-{
-coll = 0;
-}
-} else if (valB[0] != -1) {
-if (this.plateau[x][y].get_occupation() == Endroit)// donc les trios autour sont à l'"Envers"
-cote = 2;
-else
-cote = 1;
-retourTourne = verif_coll_1_piece(valB, aPlacer, cote);// on envoie le cote correspondant, il est
-											// différent selon si le triomino est a l
-											// endroit ou a l envers
-if ((retourTourne != -1) && (coll < 2)) {
-coll = 1;
-posable = 1;
-tourne[this.nbreCoupsVoulus + 2] = retourTourne;
-} else// la piece n allait pas
-{
-coll = 0;
-}
+				retourTourne = verif_coll_1_piece(valA, aPlacer, cote);
+				if ((retourTourne != -1) && (coll < 2)) {
+					coll = 1;
+					posable = 1;
+					tourne[this.nbreCoupsVoulus + 2] = retourTourne;
+				} else// la piece n allait pas
+				{
+					coll = 0;
+				}
+			} else if (valB[0] != -1) {
+				if (this.plateau[x][y].get_occupation() == Endroit)// donc les trios autour sont à l'"Envers"
+					cote = 2;
+				else
+					cote = 1;
+				retourTourne = verif_coll_1_piece(valB, aPlacer, cote);// on envoie le cote correspondant, il est
+															// différent selon si le triomino est a l
+															// endroit ou a l envers
+				if ((retourTourne != -1) && (coll < 2)) {
+					coll = 1;
+					posable = 1;
+					tourne[this.nbreCoupsVoulus + 2] = retourTourne;
+				} else// la piece n allait pas
+				{
+					coll = 0;
+				}
 
-} else if (valC[0] != -1) {
-retourTourne = verif_coll_1_piece(valC, aPlacer, 0);
-if ((retourTourne != -1) && (coll < 2)) {
-coll = 1;
-posable = 1;
-tourne[this.nbreCoupsVoulus + 2] = retourTourne;
-} else// la piece n allait pas
-{
-coll = 0;
-}
+			} else if (valC[0] != -1) {
+				retourTourne = verif_coll_1_piece(valC, aPlacer, 0);
+				if ((retourTourne != -1) && (coll < 2)) {
+					coll = 1;
+					posable = 1;
+					tourne[this.nbreCoupsVoulus + 2] = retourTourne;
+				} else// la piece n allait pas
+				{
+					coll = 0;
+				}
 
-} else// il n y a aucun triomino autour de cet endroit => ERREUR
-{
-System.out.println("Erreur ligne 273!!!! (coup_possible de triomino)");
-System.exit(1);
-}
+			} else// il n y a aucun triomino autour de cet endroit => ERREUR
+			{
+				System.out.println("Erreur ligne 273!!!! (coup_possible de triomino)");
+				System.exit(1);
+			}
 
-tourne[0] = posable;
-tourne[1] = coll;
-
-if (coll > 0) {
-if (!existe_deja_CV(this.coupsPossibles[i][0], this.coupsPossibles[i][1])) {
-this.coupsVoulus[this.nbreCoupsVoulus] = this.coupsPossibles[i];
-this.nbreCoupsVoulus++;
-}
-}
-}
-}
-return tourne;
-	   }
+			tourne[0] = posable;
+			tourne[1] = coll;
+			if (coll > 0) {
+				if (!existe_deja_CV(this.coupsPossibles[i][0], this.coupsPossibles[i][1])) {
+					this.coupsVoulus[this.nbreCoupsVoulus] = this.coupsPossibles[i];
+					this.nbreCoupsVoulus++;
+				}
+			}
+		}
+	}
+	return tourne;
+   }
 
    int choisir_coup(Joueur[] joueur, int joueur_act) {
 	   int num = -3, temPioche = 0, ind = -3;
