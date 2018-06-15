@@ -90,4 +90,22 @@ public class Domino extends Partie {
 
     }
 
+	@Override
+	void placer_pion(int indice, Joueur[] joueur, int joueur_act) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	void aide(Joueur[] joueur, int joueur_act) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	int ia(Joueur[] joueur, int joueur_act) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

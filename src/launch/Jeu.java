@@ -6,6 +6,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
+import launch.PiocheDomino;
+
 public class Jeu extends JFrame {
 	
 	
@@ -37,10 +39,10 @@ public class Jeu extends JFrame {
     public Partie choix_jeu() {
     	do
     	{	
-    		System.out.println("domino/triomino?");
+    		System.out.println("domino/triomino/domap?");
     		this.nom=sc.nextLine();
     		
-    	}while (!this.nom.equals("domino") && !this.nom.equals("triomino"));
+    	}while (!this.nom.equals("domino") && !this.nom.equals("triomino")&& !this.nom.equals("domap"));
     	System.out.println("tu as choisi " + this.nom);
     	
     	Partie jeton;
@@ -49,9 +51,13 @@ public class Jeu extends JFrame {
 		{
 			jeton=new Domino();
 		}
-		else
+		else if (this.get_nom().equals("triomino"))
 		{
 			jeton=new Triomino();
+		}
+		else
+		{
+    		jeton=new PiocheDomino();
 		}
     	
     	return jeton;

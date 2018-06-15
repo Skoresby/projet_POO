@@ -197,13 +197,15 @@ abstract class Partie extends Jeu {
     
     //methodes abstraites
     abstract Pion[] init_tab();
-	abstract Pion[][] init_plateau();
-    abstract void afficher();
-	abstract  int partie_finie(Joueur[] joueur);
-	abstract int choisir_coup(Joueur[] joueur, int joueur_act);
-    abstract int[] coup_possible(int indice);
-	abstract void placer_pion(int indice);
-    abstract int premier_a_jouer();	
-    abstract void aide();
+	 abstract Pion[][] init_plateau();
+	 abstract void afficher();
+	 abstract  int partie_finie(Joueur[] joueur);
+	 abstract int choisir_coup(Joueur[] joueur, int joueur_act);
+	 abstract int[] coup_possible(int indice);
+	 abstract void placer_pion(int indice, Joueur[] joueur, int joueur_act);
+	 abstract int premier_a_jouer();
+	 abstract void aide(Joueur[] joueur, int joueur_act);
+	 abstract int ia(Joueur[] joueur, int joueur_act);//int l indice du tableau a jouer
+
 
 }

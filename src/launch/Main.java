@@ -22,27 +22,31 @@ public class Main extends JFrame{
 		Joueur joueur[] = new Joueur[4];
 
 		Partie jeton = jeu.choix_jeu();
-		//Domino dom= new Domino();
 		
 		jeton.entrer_joueurs(joueur);
 		
 		
-		jeton.afficher_base_jeu();
+		//jeton.afficher_base_jeu();
 
 		Pion[]tableau=jeton.init_tab();
 		Pion[][] plateau=jeton.init_plateau();
 		joueurAct=jeton.premier_a_jouer();		
 		do
 		{
-			System.out.println("le joueur numero "+joueurAct+" commence");
-			indiceChoisi=jeton.choisir_coup(joueur, joueurAct);
-			//retourCoupPossible=jeton.coup_possible(indiceChoisi);
-	    	jeton.placer_pion(indiceChoisi);
-
-			//System.out.println("retour : coll="+(retourCoupPossible/10)+" nbre de tours a faire : "+(retourCoupPossible%10));
-		
+			System.out.println("c est au tour de "+joueur[joueurAct].get_pseudo()+" de jouer");
+			if(joueur[joueurAct].get_type()==1)//humain
+				indiceChoisi=jeton.choisir_coup(joueur, joueurAct);
+			else
+				indiceChoisi=jeton.ia(joueur, joueurAct);
+			
+			if(indiceChoisi!=-1)//si -1 donc passe son tour
+			{
+		    	jeton.placer_pion(indiceChoisi, joueur, joueurAct);
+			}
+			joueurAct=(joueurAct+1)%jeton.get_nbre_j_total();
 			finJeu=jeton.partie_finie(joueur);
 		}while(finJeu==0);
+		
 		
 	}
 
